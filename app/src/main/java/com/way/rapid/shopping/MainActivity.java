@@ -8,16 +8,9 @@ import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.way.rapid.shopping.adapter.ProListAdapter;
-import com.way.rapid.shopping.bean.ProDetail;
 import com.way.rapid.shopping.bean.Product;
 import com.way.rapid.shopping.help.ProductHttpThread;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

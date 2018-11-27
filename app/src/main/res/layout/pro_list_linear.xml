@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="160px"
+              android:layout_width="match_parent"
+              android:layout_height="80dp"
               android:orientation="horizontal"
-    android:padding="16dp">
+              android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/pro_icon_image"
+        android:layout_width="144dp"
+        android:layout_height="100dp"/>
 
-        <ImageView
-            android:id="@+id/pro_icon_image"
-            android:layout_width="144dp"
-            android:layout_height="100dp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/title"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/price"/>
-
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/add_shop"
-        android:text="加入购物车"
-        />
-           <!-- <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/add_button"
-                    android:text="+"/>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/num"
-                    android:text="0"/>
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/del_button"
-                    android:text="-"/>
-            </LinearLayout>-->
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/add_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加入购物车"
+            />
+        <!-- <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+             <Button
+                 android:layout_width="40dp"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/add_button"
+                 android:text="+"/>
+             <EditText
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/num"
+                 android:text="0"/>
+             <Button
+                 android:layout_width="40dp"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/del_button"
+                 android:text="-"/>
+         </LinearLayout>-->
+
+    </LinearLayout>
 
 
 </LinearLayout>

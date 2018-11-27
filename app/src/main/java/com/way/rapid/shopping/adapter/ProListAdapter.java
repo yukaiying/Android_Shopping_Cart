@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.way.rapid.shopping.R;
 import com.way.rapid.shopping.bean.ImageShow;
-import com.way.rapid.shopping.bean.ProDetail;
 import com.way.rapid.shopping.bean.Product;
 import com.way.rapid.shopping.help.DataHelp;
 import com.way.rapid.shopping.help.ImageHttpThread;
