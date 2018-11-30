@@ -19,6 +19,7 @@ import java.util.List;
 
 public class ShoppingActivity extends AppCompatActivity {
 
+    DataHelp dataHelp = new DataHelp(this, "shop.db", null, 1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +34,22 @@ public class ShoppingActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ShoppingActivity.this, R.style.Theme_AppCompat_Light_Dialog_Alert);
                 alertDialog.setTitle("确定删除？");
                 alertDialog.setMessage("请确定执行删除？");
-                alertDialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                alertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        deleteShopTable(list.get(position).getId());
                         list.remove(position);
                         shopListAdapter.notifyDataSetChanged();
                         Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });
-
+                alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
                 alertDialog.show();
             }
         });
@@ -50,7 +57,6 @@ public class ShoppingActivity extends AppCompatActivity {
     }
 
     private List<Shopping> queryShopTable() {
-        DataHelp dataHelp = new DataHelp(this, "shop.db", null, 1);
         Cursor tabShop = dataHelp.getReadableDatabase().query("tab_shop", null, null, null, null, null, null);
         List<Shopping> list = new ArrayList<Shopping>();
         while (tabShop.moveToNext()) {
@@ -63,6 +69,10 @@ public class ShoppingActivity extends AppCompatActivity {
             list.add(shopping);
         }
         return list;
+    }
+
+    private void deleteShopTable(int id){
+        dataHelp.getWritableDatabase().delete("tab_shop", "id = ?", new String[]{String.valueOf(id)});
     }
 
     public void shopBack(View v) {
