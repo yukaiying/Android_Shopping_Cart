@@ -18,8 +18,10 @@ import android.widget.Toast;
 import com.way.rapid.shopping.R;
 import com.way.rapid.shopping.bean.ImageShow;
 import com.way.rapid.shopping.bean.Product;
+import com.way.rapid.shopping.dao.ShoppingDao;
 import com.way.rapid.shopping.help.DataHelp;
 import com.way.rapid.shopping.help.ImageHttpThread;
+import com.way.rapid.shopping.help.ShowImageByHttp;
 
 import java.util.List;
 
@@ -48,17 +50,11 @@ public class ProListAdapter extends ArrayAdapter {
             view = convertView;
             proLayout = (ProLayout) view.getTag();
         }
-        setImage(product.getImage(), proLayout.proImage);
+        ShowImageByHttp.setImage(product.getImage(), proLayout.proImage);
         proLayout.priceView.setText(product.getPrice());
         proLayout.titleView.setText(product.getTitle());
         proLayout.addShoppingButton.setOnClickListener(v -> {
-            DataHelp dataHelp = new DataHelp(getContext(), "shop.db", null, 1);
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("title", product.getTitle());
-            contentValues.put("price", product.getPrice());
-            contentValues.put("img", product.getImage());
-            contentValues.put("num", 1);
-            dataHelp.getWritableDatabase().insert("tab_shop", null, contentValues);
+            ShoppingDao.insertOrUpdateShop(new DataHelp(getContext(), "shop.db", null, 1), product);
             Toast.makeText(getContext(), "成功加入购物车", Toast.LENGTH_SHORT).show();
         });
         return view;
@@ -71,29 +67,6 @@ public class ProListAdapter extends ArrayAdapter {
         private Button addShoppingButton;
     }
 
-    @SuppressLint("HandlerLeak")
-    private static android.os.Handler handler = new android.os.Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            ImageShow imageShow = (ImageShow) msg.obj;
-            imageShow.getImageView().setImageBitmap(imageShow.getBitmap());
-            super.handleMessage(msg);
-        }
-    };
-
-    private static void setImage(String path, ImageView view) {
-        ImageHttpThread imageHttpThread = new ImageHttpThread();
-        imageHttpThread.setImgUrl(path);
-        imageHttpThread.start();
-        try {
-            imageHttpThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Message message = new Message();
-        message.obj = new ImageShow(view, imageHttpThread.getBitmap());
-        handler.sendMessage(message);
-    }
 
 
 }

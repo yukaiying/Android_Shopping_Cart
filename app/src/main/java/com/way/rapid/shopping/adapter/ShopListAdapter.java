@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.way.rapid.shopping.R;
 import com.way.rapid.shopping.bean.Shopping;
+import com.way.rapid.shopping.help.ShowImageByHttp;
 
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class ShopListAdapter extends ArrayAdapter {
         }
         shopLayout.titleView.setText(shopping.getTitle());
         shopLayout.priceView.setText(shopping.getPrice());
+        ShowImageByHttp.setImage(shopping.getImg(), shopLayout.imageView);
         shopLayout.numText.setText(shopping.getNum()+"");
         shopLayout.addButton.setOnClickListener(v -> {
 

@@ -12,7 +12,7 @@ public class DataHelp extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       db.execSQL("create table tab_shop(id integer primary key autoincrement, title varchar(40), price varchar(30),img varchar(50),num integer(10))");
+       db.execSQL("create table tab_shop(id integer primary key autoincrement, title varchar(40), price varchar(30),img varchar(50),num integer(10), pro_id integer(10))");
     }
 
     @Override

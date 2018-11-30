@@ -33,7 +33,7 @@ public class ImageHttpThread extends Thread{
     @Override
     public void run() {
         try {
-                    HttpURLConnection conn = (HttpURLConnection) new URL("http://192.168.22.2:8080/shopping/"+imgUrl).openConnection();
+                    HttpURLConnection conn = (HttpURLConnection) new URL(HttpHelp.URL+imgUrl).openConnection();
                     conn.setConnectTimeout(5000);
                     conn.setReadTimeout(5000);
                     conn.setRequestMethod("GET");

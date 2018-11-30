@@ -22,10 +22,10 @@ public class ProductHttpThread extends Thread{
     @Override
     public void run() {
         try {
-            URL url = new URL("http://192.168.22.2:8080/shopping/product");
+            URL url = new URL(HttpHelp.URL + "product");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod(HttpMethod.GET.toString());
-            httpURLConnection.setReadTimeout(5000);
+            httpURLConnection.setReadTimeout(HttpHelp.TIMEOUT);
             InputStream inputStream = httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
